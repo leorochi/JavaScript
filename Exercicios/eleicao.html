@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Modelo</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <section class="container">
+    <h1>Apuração de votos</h1>
+    <form action="form" class="form">
+        <label for="votos-a">  Digite os votos do candidato A </label>
+        <input type="text" class="votos-a"> 
+        <label for="votos-b"> Digite os votos do candidato B </label>
+        <input type="text" class="votos-b"> 
+        <label for="votos-c"> Digite os votos do candidato C </label>
+        <input type="text" class="votos-c">
+        <label for="votos-nulos"> Digite os votos nulos </label>
+        <input type="text" class="votos-nulos">
+        <label for="votos-brancos"> Digite os votos em brancos </label>
+        <input type="text" class="votos-brancos">
+        <button>Apurar</button>
+    </form>
+    <div class="resultado"></div>
+  </section>
+  
+  
+  <script src="eleicao.js"></script>
+</body>
+
+</html>
