@@ -20,3 +20,8 @@ console.log(refri, carne);
 for(let i = 0; i < produtos.length; i++) {
     console.log(`Índice ${i}:`, produtos[i]);
 }
+
+
+
+
+

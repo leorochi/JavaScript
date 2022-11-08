@@ -5,6 +5,7 @@ const todoList = document.querySelector("#todo-list");
 const editForm = document.querySelector("#edit-form");
 const editInput = document.querySelector("#edit-input");
 const cancelEditBtn = document.querySelector("#cancel-edit-btn");
+const filter = document.querySelector('#filter-select');
 
 let oldInputValue;
 
@@ -43,7 +44,6 @@ function saveTodo(text) {
 function toggleForms() {
     editForm.classList.toggle("hide");
     todoForm.classList.toggle("hide");
-    todoList.classList.toggle("hide");
 }
 
 function updateTodo(text) {
@@ -71,6 +71,28 @@ if(inputValue) {
 }
 
 });
+
+filter.addEventListener('click', filterTodo);
+
+function filterTodo(e) {
+    const todos = todoList.childNodes;
+
+    todos.forEach(function(todo) {
+        switch(e.target) {
+            case 'all':
+                todo.style.display = 'flex';
+            break;
+            case 'done':
+                if(todo.classList.contains('done')) {
+                    todo.style.display = 'flex';
+            }   else {
+                    todo.style.display = 'none';
+            }
+    }
+})
+
+
+}
 
 document.addEventListener('click', function(e) {
 
@@ -117,3 +139,4 @@ e.preventDefault();
 
     toggleForms();
 })
+
