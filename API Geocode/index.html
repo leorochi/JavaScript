@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <ul class="list"></ul>
+    <script>
+        //Call geocode
+        geocode();
+
+        function geocode() {
+            var location = 'Rua Magnólia, 99, Araruna';
+            axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+                params:{
+                    address:location,
+                    key:'AIzaSyCKCw_NEvuxS1lRH6rsruIiiIhbbWBXKwU'
+                }
+            })
+            .then(function(response) {
+                var ul = document.querySelector('.list');
+                var formattedAddress = response.data.results[0].formatted_address;
+                console.log(formattedAddress)
+                var output = `<li> ${formattedAddress} </li>`
+                ul.innerHTML = output;
+                console.log(response);
+
+                var addressComponents = response.data.results[0].address_components;
+                addressComponents.forEach(address => {
+                    output += `<li> <strong> ${address.types[0]} </strong> ${address.long_name} </li>`
+                    ul.innerHTML = output;
+
+                } )
+
+                var geometry = response.data.results[0].geometry;
+                
+                output += `<li> <strong> Latitude: </strong> ${geometry.location.lat}  </li>
+                           <li> <strong> Longitude:  </strong> ${geometry.location.lng}  </li>`;
+                           
+                ul.innerHTML = output;
+                
+
+
+
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+        }
+    </script>
+</body>
+</html>

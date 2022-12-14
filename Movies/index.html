@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+</head>
+<body>
+    <button id="Drama">Comédia</button>
+    <button id="Romance">Romance</button>
+    <div id="output"></div>
+ <script>
+
+        function getMovies() {
+            const url = id => `http://www.omdbapi.com/?i=tt${id}&apikey=5e4b008c`
+            const movies = [];
+
+            const n = (10).toLocaleString('pt-BR', {
+                minimumIntegerDigits: 7,
+                useGrouping: false
+            })
+
+
+
+            for(let i = 1000000; i <= 1000150; i++) {
+             const n = (i).toLocaleString('pt-BR', {
+                minimumIntegerDigits: 7,
+                useGrouping: false
+             })
+             fetch(url(n)).then(response => 
+             response.json()
+             .then(data => 
+             movies.push(data)
+            ));
+            }
+
+                
+
+           
+
+            Promise.all(movies);
+            console.log(movies);
+            console.log(movies[1]);
+
+        }
+
+
+       /*function getMovies() {
+        const url = id => `https://api.themoviedb.org/3/movie/${id}?api_key=33eb0a35db4a6144108b364a97612114`;
+
+        const movies = [];
+        const moviesDrama = [];
+
+        for(let i = 0; i <= 150; i++) {
+        movies.push(fetch(url(i)).then(response => response.json()).then(data => data))
+    }
+
+       Promise.all(movies)
+       .then(mov => {
+        const output = document.querySelector('#output');
+        output.innerHTML= mov;
+       })
+        
+        console.log(movies);
+
+}*/
+
+    /*function getMovies() {
+        fetch('https://api.themoviedb.org/3/movie/550?api_key=33eb0a35db4a6144108b364a97612114')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+    }*/
+
+    getMovies();
+
+ </script>   
+</body>
+</html>

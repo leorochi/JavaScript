@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <title>Pesquisa Endereçp</title>
+</head>
+<body>
+    <input type="text" id="search" placeholder="Digite o endereço">
+    <ul class="list"> 
+    </ul>
+   <script>
+
+    var inputSearch = document.querySelector('#search');
+    
+
+    inputSearch.addEventListener('input', geocode);
+    
+    function geocode() {
+
+    var search = inputSearch.value;
+
+    
+
+    axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+        params:{
+            address: search,
+            key: 'AIzaSyCKCw_NEvuxS1lRH6rsruIiiIhbbWBXKwU'
+        }
+    })
+    .then(response => {
+        var ul = document.querySelector('.list');
+
+        var formattedAddress = response.data.results[0].formatted_address;
+        var addressComponents = response.data.results[0].address_components;
+        var geometry = response.data.results[0].geometry;
+
+        var output = `<li> <strong> Endereço: </strong> ${formattedAddress} </li>`;
+        ul.innerHTML = output;
+
+        addressComponents.forEach(address => {
+            output += `<li> <strong>${address.types[0]} </strong> ${address.long_name} </li>`;
+            ul.innerHTML = output;
+        })
+
+        output += `<li> <strong> Latitude: </strong> ${geometry.location.lat} </li>
+                   <li> <strong> Longitude: ${geometry.location.lng} </li>`
+        ul.innerHTML = output;
+
+        console.log(response);
+
+
+    })
+    .catch(response => {
+        console.log(response);
+    })
+
+    }
+
+    
+
+    
+
+
+   </script> 
+</body>
+</html>

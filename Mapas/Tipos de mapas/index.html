@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-d20ygfaqPO0MIzyXYaRi69ZnZ1rPhlU&callback=initMap" async defer>
+    </script>  
+    <style>
+        #map {
+            width: 500px;
+            height: 500px;
+            background: #ddd;
+        }
+    </style>
+    <title>Tipos de mapas</title>
+</head>
+<body>
+    <div id="map"></div>
+    <button id="satelite">Satélite</button>
+    <button id="terreno">Terreno</button>
+    <button id="hibrido">Híbrido</button>
+    <button id="roadmap">Padrão</button>
+    <script>
+        function initMap() {
+
+            let mapType;
+
+        const options = {
+            center: {lat: -30.0224671, lng: -51.1025457},
+            zoom: 12,
+        }
+
+         map = new google.maps.Map(document.getElementById('map'), options);
+
+         const btnSatelite = document.getElementById('satelite');
+
+         btnSatelite.addEventListener('click', () => {
+            const options = {
+                center: {lat: -30.0224671, lng: -51.1025457},
+                zoom: 12,
+                mapTypeId:'satellite'
+            }
+
+            map = new google.maps.Map(document.getElementById('map'), options);
+            
+         })
+
+         const btnTerreno = document.getElementById('terreno');
+
+         btnTerreno.addEventListener('click', () => {
+            const options = {
+                center: {lat: -30.0224671, lng: -51.1025457},
+                zoom: 12,
+                mapTypeId:'terrain'
+            }
+            map = new google.maps.Map(document.getElementById('map'), options);
+         })
+
+        
+
+         
+
+
+
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Criando Mapa</title>
+    <style>
+        #map {
+            width: 1000px;
+            height: 1000px;
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div id='map'></div>
+    <script>
+
+        function initMap() {
+            const options = {
+                center: {lat: -30.0224671, lng: -51.1025457},
+                zoom: 12,
+                mapTypeControl: true,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                    position: google.maps.ControlPosition.TOP_CENTER
+                }
+
+            }
+
+            map = new google.maps.Map(document.getElementById('map'), options);
+
+        }
+
+        initMap();
+    </script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-d20ygfaqPO0MIzyXYaRi69ZnZ1rPhlU&callback=initMap" async defer>
+    </script>  
+</body>
+</html>

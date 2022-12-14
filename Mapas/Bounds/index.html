@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-d20ygfaqPO0MIzyXYaRi69ZnZ1rPhlU&callback=initMap" async defer></script>
+    <style>
+        #map {
+            width: 450px;
+            height: 500px;
+            background: #ddd;
+            margin: auto;
+            
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #output {
+            text-align: center;
+            
+        }
+
+        #container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #map2 {
+            width: 450px;
+            height: 500px;
+            background: #ddd;
+        }
+
+       button {
+        margin-left: 950px;
+       }
+
+    </style>
+    <title>Mapas</title>
+</head>
+<body>
+<h1>Trabalhando com mapas</h1>
+<div id="map"></div>
+<div id="output"></div>
+
+    
+
+<script>
+    function initMap() {
+        const options = {
+            center: {lat: -30.0224671, lng: -51.1025457},
+            zoom: 12,
+        }
+
+        const map = new google.maps.Map(document.getElementById('map'), options);
+
+
+        
+        google.maps.event.addListener(map, 'bounds_changed', function() {
+            var bounds = map.getBounds();
+            var NE = bounds.getNorthEast();
+            var SW = bounds.getSouthWest();
+
+            const output = document.getElementById('output');
+
+            output.innerHTML = `NE: ${NE.lat()} <br> SW: ${SW.lng()}`;
+
+            console.log(SW.lng());
+
+        })
+
+        /*google.maps.event.addListener(map, 'idle', function() {
+            var bounds = map.getBounds();
+            var NE = bounds.getNorthEast();
+            var SW = bounds.getSouthWest();
+
+            const output = document.getElementById('output');
+            output.innerHTML = '';
+            for(var i = 0; i < 10; i++) {
+                output.innerHTML += `NE: ${Math.random(NE.lat()) * 100}  SW: ${Math.random(SW.lng()) * 100} <br>`;       
+            }
+
+        })*/
+
+        
+
+    }
+
+    initMap();
+
+</script>
+</body>
+</html>

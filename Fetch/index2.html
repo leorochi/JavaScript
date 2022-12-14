@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Capital Lookup</title>
+</head>
+<body>
+    <h1>State Capital Lookup</h1>
+    <input type="text" id="text">
+    <button id="getJson">Get Json</button>
+    <div id="output">
+    </div>
+    
+    <script>
+        document.getElementById('text').addEventListener('keyup', getCity);
+        document.getElementById('getJson').addEventListener('click', getJson);
+
+        function getJson() {
+            fetch('citys.json')
+            .then(res => res.json())
+            .then(data => {
+                var output = document.querySelector('#output')
+                data.forEach(citys => {
+                    output.innerHTML += `<p> ${citys.name}</p>`;
+
+                    console.log(data);
+                })
+            })
+
+        }
+        
+    
+        function getCity(e) {
+
+        const min = e.target.value.toLowerCase();
+            
+        const inputText = document.querySelector('#text');
+        const text = inputText.value;
+        var output = document.querySelector('#output')
+
+        var busca = output.querySelectorAll('p');
+
+        Array.from(busca).forEach(function(names) {
+            var cityName = names.firstChild.textContent;
+            if(cityName.toLowerCase().indexOf(min) == 1) {
+                names.style.display = 'block';
+            } else {
+                names.style.display = 'none';
+            }
+        })
+    
+           
+    }
+
+    </script>
+</body>
+</html>
