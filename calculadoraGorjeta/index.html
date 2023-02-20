@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de gorjeta </title>
+</head>
+<body>
+  <div id="container">
+    <header class="cabecalho">
+      <h1>Calculadora de Gorjeta</h1>
+    </header>
+    <section>
+      <form class="form">
+        <div class="d1">
+          <label for="totalFaturacao">Total de faturação: <strong>$</strong></label>
+          <input type="number" id="totalFaturacao">
+        </div>
+        <div>
+        <label for="porcentagemGorjeta">Porcentagem de gorjeta: </label>
+        <select id="porcentagemGorjeta"> 
+          <option value="10" id="p1">10%</option> 
+          <option value="11" id="p2">11%</option>
+          <option value="12" id="p3">12%</option>
+          <option value="13" id="p4">13%</option>
+        </select>
+        <div class="d2">
+          <label for="numeroPessoas">Número de pessoas: </label>
+          <input type="number" id="numeroPessoas">
+        </div>
+        <div class="d3">
+          <label for="arredondo">Arredondar: </label>
+          <select id="arredondo">
+            <option value="cima">Arredondar para cima</option>
+            <option value="baixo">Arredondar para baixo</option>
+          </select>
+        </div>
+        <button id="calcular">Calcular</button>
+        <button id="redefinir">Redefinir</button>
+      </div>
+      </form>
+    </section>
+    <section class="resultado">
+      <div class="totalGorjeta">
+      </div>
+      <div class="totalPago">
+      </div>
+      <div class="totalPessoa">
+      </div>
+  </section>
+  <div class="d4">
+  <button id="imprimir">Imprimir</button>
+  <button id="email">E-mail</button>
+  </div>
+</body>
+</html> 
